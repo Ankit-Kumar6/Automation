@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "Enter IP address:"
+read ip
+
+echo "Do you want to save the scan? YES OR NO"
+read ans
+
+if [ "$ans" == "yes" ] || [ "$ans" == "YES" ]
+then
+    echo "Enter file name:"
+    read file
+    nmap -sC -sV -p- -vv -oA "$file" "$ip"
+else
+    nmap -sC -sV -p- -vv "$ip"
+fi
